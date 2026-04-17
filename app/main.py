@@ -4,7 +4,8 @@ from contextlib import asynccontextmanager
 
 import redis
 import httpx
-from fastapi import Depends, FastAPI, HTTPException, Header, JSONResponse
+from fastapi import Depends, FastAPI, HTTPException, Header
+from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 
 from .config import settings
