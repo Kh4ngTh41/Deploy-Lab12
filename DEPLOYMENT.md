@@ -55,34 +55,32 @@ done
 | Variable | Value |
 |----------|-------|
 | `PORT` | 8000 |
-| `REDIS_URL` | (Redis connection string) |
+| `REDIS_URL` | (Redis connection - Upstash or Render Redis) |
 | `AGENT_API_KEY` | user1-secret-key |
 | `LOG_LEVEL` | INFO |
 | `RATE_LIMIT_PER_MINUTE` | 20 |
 | `MONTHLY_BUDGET_USD` | 10 |
+| `OPENAI_API_KEY` | (optional - for real LLM) |
+| `LLM_MODEL` | gpt-4o-mini |
 
 ## Deployment Steps
+
+### Render Deployment
+
+1. Push code to GitHub
+2. Go to [render.com](https://render.com)
+3. New → Blueprint → Connect GitHub repo
+4. Render auto-detects `render.yaml`
+5. Click "Apply"
+6. Add Redis (Environment → Data → Create Redis Instance)
 
 ### Railway CLI Deployment
 
 ```bash
-# 1. Install Railway CLI
 npm install -g @railway/cli
-
-# 2. Login
 railway login
-
-# 3. Initialize project
 railway init
-
-# 4. Set environment variables
-railway variables set REDIS_URL=redis://localhost:6379
-railway variables set AGENT_API_KEY=user1-secret-key
-
-# 5. Deploy
 railway up
-
-# 6. Get public URL
 railway domain
 ```
 
